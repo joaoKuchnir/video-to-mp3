@@ -16,15 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - platform: macos-latest      # Apple Silicon
-            target: aarch64-apple-darwin
-            args: "--target aarch64-apple-darwin"
-          - platform: macos-13          # Intel Mac
-            target: x86_64-apple-darwin
-            args: "--target x86_64-apple-darwin"
-          - platform: ubuntu-22.04
-            target: x86_64-unknown-linux-gnu
-            args: ""
+          # Building Windows only for now. Re-add macOS (aarch64-apple-darwin,
+          # x86_64-apple-darwin) and Linux (x86_64-unknown-linux-gnu) entries
+          # here to build all platforms again.
           - platform: windows-latest
             target: x86_64-pc-windows-msvc
             args: ""
