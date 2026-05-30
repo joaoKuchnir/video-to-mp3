@@ -32,7 +32,7 @@ try {
   Copy-Item $ff.FullName (Join-Path $binDir "ffmpeg-$triple.exe") -Force
   if ($fp) { Copy-Item $fp.FullName (Join-Path $binDir "ffprobe-$triple.exe") -Force }
 
-  Write-Host "Done. Sidecars in $binDir:"
+  Write-Host "Done. Sidecars in ${binDir}:"
   Get-ChildItem $binDir
 }
 finally {
