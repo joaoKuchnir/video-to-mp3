@@ -1,0 +1,5 @@
+{
+  "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
+  "*.{js,jsx,json,css,md}": "prettier --write",
+  "src-tauri/**/*.rs": "bash -c 'PATH=\"$HOME/.cargo/bin:$PATH\" cargo fmt --manifest-path src-tauri/Cargo.toml --'"
+}

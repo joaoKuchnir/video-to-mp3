@@ -1,0 +1,39 @@
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tab.active {
+  background: var(--card);
+  color: var(--text);
+}
+
+/* No-op selector here just to document: `.active` is also exported so
+   InputCard quality buttons reuse the same class name. */
+
+.count {
+  background: var(--bg-2);
+  color: var(--text-dim);
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+.tab.active .count {
+  background: var(--accent);
+  color: white;
+}

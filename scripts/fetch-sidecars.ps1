@@ -19,14 +19,19 @@ try {
 
   Write-Host "Fetching deno..."
   $denoZip = Join-Path $tmp "deno.zip"
+  $denoDir = Join-Path $tmp "deno"
+  New-Item -ItemType Directory -Force -Path $denoDir | Out-Null
   Invoke-WebRequest -Uri "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip" -OutFile $denoZip
-  Expand-Archive -Path $denoZip -DestinationPath (Join-Path $tmp "deno") -Force
-  Copy-Item (Join-Path $tmp "deno/deno.exe") (Join-Path $binDir "deno-$triple.exe") -Force
+  # tar (bsdtar built into Win10+) extracts zips 3-5x faster than Expand-Archive
+  tar -xf $denoZip -C $denoDir
+  Copy-Item (Join-Path $denoDir "deno.exe") (Join-Path $binDir "deno-$triple.exe") -Force
 
   Write-Host "Fetching ffmpeg..."
   $ffZip = Join-Path $tmp "ffmpeg.zip"
+  $ffDir = Join-Path $tmp "ffmpeg"
+  New-Item -ItemType Directory -Force -Path $ffDir | Out-Null
   Invoke-WebRequest -Uri "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip" -OutFile $ffZip
-  Expand-Archive -Path $ffZip -DestinationPath (Join-Path $tmp "ffmpeg") -Force
+  tar -xf $ffZip -C $ffDir
   $ff = Get-ChildItem -Path (Join-Path $tmp "ffmpeg") -Recurse -Filter "ffmpeg.exe" | Select-Object -First 1
   $fp = Get-ChildItem -Path (Join-Path $tmp "ffmpeg") -Recurse -Filter "ffprobe.exe" | Select-Object -First 1
   Copy-Item $ff.FullName (Join-Path $binDir "ffmpeg-$triple.exe") -Force

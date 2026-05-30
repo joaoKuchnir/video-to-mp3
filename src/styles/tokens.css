@@ -1,0 +1,18 @@
+/* Design tokens. Single source of truth for color/radius/etc.
+   Keep variables here; component styles consume them via `var(--…)`. */
+:root {
+  --bg: #0d0e12;
+  --bg-2: #15171e;
+  --card: #1a1d26;
+  --card-hover: #20232e;
+  --border: #2a2e3a;
+  --text: #e8eaf0;
+  --text-dim: #8b90a0;
+  --accent: #6c5ce7;
+  --accent-2: #a29bfe;
+  --accent-glow: rgba(108, 92, 231, 0.4);
+  --green: #00d68f;
+  --red: #ff5c75;
+  --amber: #ffb84d;
+  --radius: 14px;
+}

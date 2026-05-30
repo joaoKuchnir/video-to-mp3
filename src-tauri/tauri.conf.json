@@ -27,11 +27,7 @@
   "bundle": {
     "active": true,
     "targets": ["nsis", "msi"],
-    "externalBin": [
-      "binaries/yt-dlp",
-      "binaries/ffmpeg",
-      "binaries/deno"
-    ],
+    "externalBin": ["binaries/yt-dlp", "binaries/ffmpeg", "binaries/deno"],
     "icon": [
       "icons/Square30x30Logo.png",
       "icons/Square44x44Logo.png",

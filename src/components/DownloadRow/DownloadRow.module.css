@@ -1,0 +1,259 @@
+.item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: slideIn 0.3s ease;
+  transition: background 0.2s;
+}
+.item:hover {
+  background: var(--card-hover);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.vinyl {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, #1a1d26 0%, #1a1d26 17%, transparent 18%),
+    repeating-radial-gradient(
+      circle at center,
+      #16181f 0px,
+      #16181f 1.5px,
+      #0a0b0e 2px,
+      #0a0b0e 3px
+    ),
+    #0a0b0e;
+  position: relative;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px #2a2e3a;
+}
+.vinyl::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.vinyl::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 2;
+}
+.vinyl.spinning {
+  animation: vinylSpin 2.2s linear infinite;
+}
+
+@keyframes vinylSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%
+  );
+}
+
+.vinylBadge {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  z-index: 3;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  border: 2px solid var(--card);
+  animation: badgePop 0.3s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+.vinylBadge.done {
+  background: var(--green);
+  color: #06231a;
+}
+.vinylBadge.fail {
+  background: var(--red);
+  color: #2a0a10;
+}
+
+@keyframes badgePop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.badge.q320 {
+  background: rgba(108, 92, 231, 0.2);
+  color: var(--accent-2);
+}
+.badge.q192 {
+  background: rgba(139, 144, 160, 0.2);
+  color: var(--text-dim);
+}
+
+.progressWrap {
+  margin-top: 8px;
+}
+.progressBar {
+  height: 6px;
+  background: var(--bg-2);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.progressFill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  position: relative;
+  transition: width 0.4s ease;
+}
+.progressFill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progressFill.indeterminate {
+  width: 40%;
+  position: absolute;
+  animation: indeterminate 1.1s ease-in-out infinite;
+}
+.progressFill.indeterminate::after {
+  display: none;
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -45%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pct {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-2);
+  min-width: 38px;
+  text-align: right;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.iconBtn:hover {
+  background: var(--bg-2);
+  color: var(--text);
+}
+.iconBtn.retry:hover {
+  color: var(--accent-2);
+}
+
+.failReason {
+  font-size: 12px;
+  color: var(--red);
+  margin-top: 4px;
+}
+
+.stageLabel {
+  /* No visual change today — exists as a hook for future tweaks. */
+}

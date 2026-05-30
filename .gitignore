@@ -32,3 +32,6 @@ src-tauri/gen/schemas
 # scripts/fetch-sidecars.{sh,ps1} (locally and in CI), never committed.
 src-tauri/binaries/*
 !src-tauri/binaries/.gitkeep
+
+#tests
+coverage
