@@ -1,5 +1,7 @@
 # Video → MP3
 
+> **Nota:** Este projeto foi construído inteiramente via _vibe coding_ — sem escrever uma linha de código manualmente. Feito com uma stack que não possuo conhecimento, a IA fez tudo sozinha seguindo prompt e planejamento inicial.
+
 App desktop (macOS / Windows / Linux) que converte links de vídeo (YouTube e 1000+ sites)
 em MP3 320/192 kbps, com fila paralela, UI dark moderna e notificações.
 
